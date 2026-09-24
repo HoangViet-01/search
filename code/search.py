@@ -86,40 +86,17 @@ def depthFirstSearch(problem: SearchProblem):
     print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
-    util.raiseNotDefined() # nếu không tìm thấy trạng thái mục tiêu, trả về danh sách rỗng
+    "*** YOUR CODE HERE ***"
+    util.raiseNotDefined()
 
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
-
-    queue = util.Queue()
-
-    start = problem.getStartState()
-    queue.push((start, []))
-
-    visited = set()
-
-    while not queue.isEmpty():
-        state, actions = queue.pop()
-
-        if state in visited:
-            continue
-
-        visited.add(state)
-
-        if problem.isGoalState(state):
-            return actions
-
-        for successor, action, stepCost in problem.getSuccessors(state):
-            if successor not in visited:
-                newActions = actions + [action]
-                queue.push((successor, newActions))
-
-    return []
+    "*** YOUR CODE HERE ***"
     util.raiseNotDefined()
 
 def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
-    
+    "*** YOUR CODE HERE ***"
     util.raiseNotDefined()
 
 def nullHeuristic(state, problem=None):
@@ -131,7 +108,10 @@ def nullHeuristic(state, problem=None):
 
 def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
+    "*** YOUR CODE HERE ***"
     util.raiseNotDefined()
+
+
 # Abbreviations
 bfs = breadthFirstSearch
 dfs = depthFirstSearch
