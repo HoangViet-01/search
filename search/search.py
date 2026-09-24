@@ -86,28 +86,7 @@ def depthFirstSearch(problem: SearchProblem):
     print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
-    stack = util.Stack() #khai báo một ngăn xếp để lưu trữ các trạng thái và hành động tương ứng
-
-    start=problem.getStartState() # khai báo trạng thái bắt đầu của bài toán tìm kiếm
-    stack.push((start, [])) # đẩy trạng thái bắt đầu và danh sách hành động rỗng vào ngăn xếp
-    visited = set() # khai báo một tập hợp để lưu trữ các trạng thái đã được thăm
-
-    while not stack.isEmpty(): # lặp lại cho đến khi ngăn xếp rỗng
-        state, actions = stack.pop() # lấy trạng thái và danh sách hành động từ ngăn xếp
-
-        if state in visited: # nếu trạng thái đã được thăm, bỏ qua và tiếp tục vòng lặp
-            continue
-
-        visited.add(state) # đánh dấu trạng thái hiện tại là đã được thăm
-
-        if problem.isGoalState(state): # nếu trạng thái hiện tại là trạng thái mục tiêu, trả về danh sách hành động
-            return actions
-
-        for successor, action, stepCost in problem.getSuccessors(state): # lặp qua các trạng thái kế tiếp của trạng thái hiện tại
-            if successor not in visited: # nếu trạng thái kế tiếp chưa được thăm, đẩy nó vào ngăn xếp cùng với danh sách hành động tương ứng
-                stack.push((successor, actions + [action])) # đẩy trạng thái kế tiếp và danh sách hành động mới vào ngăn xếp
-    return [] # nếu không tìm thấy trạng thái mục tiêu, trả về danh sách rỗng
-    util.raiseNotDefined() # nếu không tìm thấy trạng thái mục tiêu, trả về danh sách rỗng
+    util.raiseNotDefined() 
 
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
@@ -140,27 +119,7 @@ def breadthFirstSearch(problem: SearchProblem):
 
 def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
-    queue = util.PriorityQueue()
     
-    start = problem.getStartState()
-    queue.push((start, []), 0)
-    visited = set()
-    
-    while not queue.isEmpty():
-        state, actions = queue.pop()
-        if state in visited:
-            continue
-
-        visited.add(state)
-
-        if problem.isGoalState(state):
-            return actions
-        for successor, action, stepCost in problem.getSuccessors(state):
-            if successor not in visited:
-                newActions = actions + [action]
-                newCost = problem.getCostOfActions(newActions)
-                queue.push((successor, newActions), newCost)
-    return []
     util.raiseNotDefined()
 
 def nullHeuristic(state, problem=None):
@@ -172,29 +131,6 @@ def nullHeuristic(state, problem=None):
 
 def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
-    queue = util.PriorityQueue()
-    
-    start = problem.getStartState()
-    queue.push((start, []), 0)
-    
-    visited = set()
-    while not queue.isEmpty():
-        state, actions = queue.pop()
-        if state in visited:
-            continue
-        visited.add(state)
-    
-        if problem.isGoalState(state):
-            return actions
-        for successor, action, stepCost in problem.getSuccessors(state):
-            if successor not in visited:
-                newActions = actions +[action]
-                g = problem.getCostOfActions(newActions)
-                h = heuristic(successor, problem)
-    
-                priority = g + h
-                queue.push((successor, newActions), priority)
-    return []
     util.raiseNotDefined()
 # Abbreviations
 bfs = breadthFirstSearch
